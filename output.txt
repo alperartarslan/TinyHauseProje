@@ -1,0 +1,162 @@
+ 
+Proje Adı:  Tiny House Rezervasyon ve Yönetim Sistemi  
+1. Proje Tanımı  
+Bu proje, Tiny House konseptindeki evlerin kiralanabileceği bir rezervasyon ve yönetim sistemini 
+kapsamaktadır. Kullanıcılar, sisteme kayıt olarak tiny house ilanlarını inceleyebilir, uygun tarihleri 
+seçerek rezervasyon yapabilir ve online ödeme gerçekleştirebilir. Ev sahipleri ise kendi evlerini 
+listeleyebilir, fiyat ve durum bilgilerini güncelleyebilir. Sistem, rezervasyon takibi, ödeme yönetimi ve 
+kullanıcı değerlendirmeleri gibi temel fonksiyonları içermektedir.  
+Bu proje, öğrencilerin veri tabanı tasarımı, SQL sorguları, backend geliştirme ve frontend entegrasyonu gibi birçok 
+alanda pratik yapmasını sağlayacaktır.  Ayrıca yapısal ve gerçek dünya problemlerine uygun bir yazılım geliştirme 
+süreci sunacaktır.  
+2. Projenin Amacı  
+▪ Tiny house sahipleri ve kiracılar arasında kolay ve güvenli bir rezervasyon sistemi oluşturmak.  
+▪ Tiny house evlerinin uygunluk durumunu güncel olarak takip edebilmek.  
+▪ Kullanıcı deneyimini iyileştirmek için yorum ve puanlama sistemi sunmak.  
+▪ Online ödeme altyapısı ile finansal işlemleri düzenlemek.  
+ 
+3. Kullanıcı Rolleri  
+ 
+• Kiracı:  Evleri inceleyebilir, rezervasyon yapabilir, ödeme yapabilir, yorum ekleyebilir.  
+• Ev Sahibi:  Ev ekleyebilir, ilanların detaylarını düzenleyebilir, rezervasyonları yönetebilir.  
+• Admin:  Kullanıcı hesaplarını ve sistem verilerini yönetebilir.  
+ 
+4. Sistem Gereksinimleri  
+ 
+4.1. Rol Bazlı Gereksinimler  
+Admin  
+1. Kullanıcı hesaplarını yönetebilir (ekleme, düzenleme, belirli tarihler arasında pasife çekme , 
+silme ). 
+2. Tüm rezervasyonları görüntüleyebilir ve gerektiğinde iptal edebilir.  
+3. Tüm ilanları denetleyebilir ve kurallara uygun olmayanları silebilir.  
+4. Sistemdeki ödeme geçmişini ve mali hareketleri takip edebilir.  
+ 
+Ev Sahibi  
+1. Kendi tiny house ilanlarını yönetebilir (oluşturma, düzenleme, belirli tarihler arasında pasife 
+çekme, silme)  
+2. Evleri için fiyat ve uygunluk bilgilerini güncelleyebilir.  
+3. Gelen rezervasyon taleplerini kabul edebilir veya reddedebilir.  
+4. Kiracılardan gelen yorumları görüntüleyebilir.  2025-202 6 EĞİTİM -ÖĞRETİM YILI BAHAR DÖNEMİ
+ İLERİ VERİTABANI DERSİ  
+PROJE DOKÜMANI           07 .04.202 6 
+  BİLİŞİM SİSTEMLERİ VE TEKNOLOJİLERİ  BÖLÜMÜ  
+5. İptal edilen veya tamamlanan rezervasyonların kayıtlarını görüntüleyebilir.  
+ 
+Kiracı  
+1. Sisteme kayıt olabilir ve giriş yapabilir.  
+2. Mevcut  (aktif)  tiny house ilanlarını listeleyebilir ve detaylarını inceleyebilir.  
+3. Rezervasyon yapabilir ve tarihleri belirleyerek online ödeme yapabilir.  
+4. Yapmış olduğu rezervasyonları iptal edebilir.  
+5. Kiraladığı evlere yorum ve puan ekleyebilir.  
+ 
+5. Teknik Gereksinimler  
+ 
+1. Veritabanı:  MSSQL, PostgreSQL (ya da farklı bir ilişkisel veri tabanı)  
+2. Programlama Dili:  İstenilen programlama dili kullanılabilir.  
+3. Arayüz:  İstenilen programlama dili kullanılabilir.  
+ 
+Veri Tabanı  için;  
+1. Stored Procedures (SP)  (en az 2 tane  ve aktif olarak kullanılması gerekir ) 
+2. Functions (en az 2 tane  ve aktif olarak kullanılması gerekir ) 
+3. Trigger (en az 2 tane  ve aktif olarak kullanılması gerekir ) 
+4. Constraint Keys (Tüm (gerekli) tablolar için; Primary Key , Foreign Key, Unique Constraint , 
+Check Constraint, Not Null Constraint ) 
+5. Normalizasyon kurallarına uyulmalıdır.  
+6. Tablo ve kolon isimleri belirli standarda göre tasarlanmalıdır.  
+ 
+Ara yüz için;  
+Admin , sistemdeki en yüksek erişime sahip rol olup, tüm kullanıcılar ve içerik üzerinde tam denetim 
+sağlar. Adminin görmesi gereken ekranlar şunlardır:  
+Ana Ekran  
+✓ Sisteme giriş yaptıktan sonra admin, genel sistem durumuna ve aktif kullanıcıların sayısına dair 
+bir özet görmelidir  (Dashboard -şekil, grafik vs. olabilir) . 
+✓ Kullanıcılar, rezervasyonlar ve ödeme durumlarına dair temel listeleri görüntüleyebilmelidir.  
+Kullanıcı Yönetimi  
+✓ Kullanıcı Listesi: Admin, sisteme kaydolan tüm kullanıcıları görebilir. Bu liste üzerinde kullanıcı 
+bilgileri (ad, soyad, e -posta, rol) yer alır.  
+✓ Kullanıcı Yönetim: Kullanıcı ekleyebilir, düzenleyebilir, silebilir veya kullanıcıları geçici olarak 
+devre dışı bırakabilir (aktif/pasif durumu).  
+✓ Kullanıcı Arama: Belirli kriterlere göre kullanıcıları arayabilir  (liste içinde filtre ile çözülebilir) . 
+Rezervasyon Yönetimi  
+✓ Rezervasyonlar: Admin, tüm yapılan rezervasyonları görebilir ve her rezervasyonun durumu 
+hakkında detaylı bilgi alabilir (başlangıç tarihi, bitiş tarihi, ödeme durumu, kullanıcı bilgileri).  
+✓ Rezervasyon İptali: Admin, kullanıcıların rezervasyonlarını iptal edebilir.  
+İlan Yönetimi  
+✓ İlanlar Listesi: Sistemdeki tüm tiny house ilanlarını listeleyebilir. İlan bilgileri (ev sahibi, fiyat, 
+tarih, konum vb.) görünür.  
+✓ İlan Denetimi: Admin, ilanları inceleyebilir, kurallara aykırı olanları silebilir veya düzenleyebilir.  
+Ödeme Yönetimi  
+✓ Mali Raporlar: Admin, sistemdeki finansal raporları ve işlem geçmişini inceleyebilir.  
+İstatistik ve Raporlama  
+✓ Kullanıcı İstatistikleri: Sistemdeki kullanıcı sayısını, aktif kullanıcıları, yeni üyeleri ve rezervasyon 
+trendlerini raporlayabilir.  
+✓ Sistemi Genel Durumu: Ödemeler, rezervasyonlar, yorumlar gibi tüm faaliyetlerin analizini 
+görsel grafikler ve raporlar şeklinde alabilir.  
+ 
+Ev sahibi , yalnızca kendi ilanları üzerinde işlem yapabilir ve bunlarla ilgili verileri görebilir. Ev sahibinin 
+görmesi gereken ekranlar şunlardır:  
+Ana Ekran  
+✓ Ev sahibi, kendi ilanlarının durumu, yapılan rezervasyonlar, ödemeler ve kullanıcı yorumları 
+hakkında bir özet görebilir (Dashboard -şekil, grafik vs. olabilir).  
+İlan Yönetimi  
+✓ İlanlar Listesi: Ev sahibi, kendi tiny house ilanlarını görebilir ve her ilan için detayları (fiyat, 
+açıklama, fotoğraflar, tarih vb.) düzenleyebilir.  
+✓ İlan Ekleme/Düzenleme: Yeni ilanlar oluşturabilir veya mevcut ilanlarını düzenleyebilir. İlanın 
+geçerlilik tarihlerini, fiyatını ve uygunluk durumunu güncelleyebilir.  
+✓ İlan Durumunu Güncelleme: İlanı aktif, pasif veya silinebilir hale getirebilir.  
+Rezervasyon Yönetimi  
+✓ Rezervasyonlar: Ev sahibi, yapılan rezervasyon taleplerini görüntüleyebilir. Bu rezervasyonları 
+kabul edebilir veya reddedebilir.  
+✓ Rezervasyon Detayları: Ev sahibi, her bir rezervasyonun detaylarını (kiracı bilgileri, tarih, 
+ödeme durumu) inceleyebilir.  
+Yorumlar ve Puanlar  
+✓ Kiracı Yorumları: Ev sahibi, kiracılardan gelen yorumları görebilir ve cevaplayabilir.  
+Ödeme Bilgileri  
+✓ Ödeme Geçmişi: Ev sahibi, kendi evlerine yapılan ödemeleri ve ödeme durumlarını 
+inceleyebilir.  
+✓ Gelir Raporları: Ev sahibi, elde ettiği geliri raporlar şeklinde alabilir.  
+ 
+Kiracı , sisteme kaydolmuş ve rezervasyon yapmak isteyen kullanıcı rolüdür. Kiracının görmesi gereken 
+ekranlar şunlardır:  
+Ana Ekran  
+✓ Ev Ara ve Listele: Kiracı, aktif tiny house ilanlarını arayabilir, fiyat, konum, tarih ve ev tipi gibi 
+filtrelere göre listeleme yapabilir.  
+✓ Popüler Evler: Kiracılara, en popüler ya da en yüksek puan alan evlerin önerildiği bir bölüm 
+gösterilebilir.  
+İlan Detayları  
+✓ Ev Bilgileri: Kiracı, her evin detaylarını (fiyat, açıklama, özellikler, fotoğraflar vb.) 
+görüntüleyebilir.  
+✓ Rezervasyon Takvimi: Kiracı, evin takvimine bakarak uygun tarihlerde rezervasyon 
+yapabileceğini görebilir.  
+Rezervasyon Yapma  
+✓ Tarih Seçimi: Kiracı, istediği tarihleri seçerek evin müsaitliğini kontrol edebilir.  
+✓ Online Ödeme: Rezervasyon yaparken ödeme gerçekleştirebilir.  
+✓ Rezervasyon Onayı: Rezervasyon sonrası ödeme ve onay durumu hakkında bilgilendirilir.  
+Rezervasyonlarım  
+✓ Geçmiş Rezervasyonlar: Kiracı, geçmişteki rezervasyonlarını görüntüleyebilir, iptal edebilir 
+veya detayları inceleyebilir.  
+✓ İptal İşlemleri: Kiracı, rezervasyonlarını iptal edebilir, ancak iptal politikasına göre işlem ücreti 
+alınabilir  (bu özellik isteğe bağlı eklenebilir ). 
+Yorumlar ve Puanlama  
+✓ Ev Değerlendirme: Kiracı, kiraladığı evlere yorum ve puan ekleyebilir. Yapılan 
+değerlendirmeler, ev sahibine iletilir.  
+ 
+Genel Özellikler ve Arayüz Tasarımı  
+Arayüzde olması gereken isterler yukarıda belirtilmiştir. Bu isterleri karşılayacak tasarımı kendi tercihleriniz 
+doğrultusunda gerçekleştirebilirsiniz.  
+Kullanıcı Dostu Arayüz:  Kullanıcıların kolayca gezinmesini sağlayacak basit ve anlaşılır bir tasarım 
+olmalıdır. Kullanıcıların sistemde hızlıca işlem yapabilmesi için görsel ipuçları ve yönlendirmeler 
+eklenebilir.  
+Bildirim Sistemi:  Kullanıcılar, rezervasyonları, ödeme durumları ve yorumlar hakkında bildirim almalıdır  
+(Bildirimleri tercihlerinize göre sms/eposta vb. tasarlayabilirsiniz ). 
+Bu özellikler, her rolün sistemdeki işlevsel ihtiyaçlarına yönelik en verimli arayüz deneyimini sunmayı 
+amaçlar.  
+ 
+ 
+Herhangi bir sorunuz olursa benimle (Doç. Dr. Fatih YÜCALAR ) iletişime geçebilirsiniz.  
+Başarılar dilerim  6. Teslim Edilmesi Gerekenler  
+• Veri tabanı ER diyagramı ve SQL scriptleri  
+• Backend kodları ve (varsa API dokümantasyonu)  
+•   Kullanıcı arayüzü ekran tasarımları  
+• Test senaryoları ve sonuçları  
+• Proje dokümanı ve proje anlatım videosu
